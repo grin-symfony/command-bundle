@@ -1,5 +1,5 @@
 {
-    "name": "green-symfony/command-bundle",
+    "name": "grin-symfony/command-bundle",
     "autoload": {
         "psr-4": {
             "GS\\Command\\": "src/"
@@ -10,18 +10,18 @@
     "description":	"Commands for extending into Symfony Application.",
     "authors": [
         {
-            "name":			"Grigory Koblitsky",
-			"email":		"son5-29@mail.ru"
+            "name":			"Grigory Koblitskiy",
+			"email":		"grin180898@mail.ru"
         }
     ],
-    "keywords": ["green-symfony", "command-bundle"],
+    "keywords": ["grin-symfony", "command-bundle"],
     "license": "MIT",
     "require": {
         "php": ">=7",
         "symfony/translation": ">=6",
         "symfony/monolog-bundle": ">=2",
-		"green-symfony/service-bundle": ">=1",
-		"green-symfony/env-processor-bundle": ">=1",
+		"grin-symfony/service-bundle": ">=1",
+		"grin-symfony/env-processor-bundle": ">=1",
         "symfony/property-access": ">=6",
         "symfony/string": ">=6",
         "symfony/config": ">=6",
@@ -32,11 +32,11 @@
     "repositories": [
 		{
 			"type": "path",
-			"url": "./bundles/green-symfony/service-bundle"
+			"url": "./bundles/grin-symfony/service-bundle"
 		},
 		{
 			"type": "path",
-			"url": "./bundles/green-symfony/env-processor-bundle"
+			"url": "./bundles/grin-symfony/env-processor-bundle"
 		}
 	]
 }
