@@ -1,0 +1,4 @@
+monolog:
+    channels:
+    # service: @monolog.logger.gs_command.dev_logger
+    -   "gs_command.dev_logger"

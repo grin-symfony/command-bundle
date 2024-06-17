@@ -1,0 +1,114 @@
+parameters:
+    ###> DEFAULT ###
+    
+    gs_command.app_env: '%env(APP_ENV)%'
+    env(GS_COMMAND_DISPLAY_INIT_HELP_MESSAGE): '1'
+    
+    ###> DEFAULT WAY: parameters -> ContainerBuilder::getParameter -> Extension -> Configuration ###
+    gs_command.progress_bar_spin:
+        -    " ⠋"
+        -    " ⠙"
+        -    " ⠚"
+        -    " ⠒"
+        -    " ⠂"
+        -    " ⠂"
+        -    "⠒ "
+        -    "⠲ "
+        -    "⠴ "
+        -    "⠦ "
+        -    "⠖ "
+        -    "⠒ "
+        -    "⠐ "
+        -    "⠐ "
+        -    " ⠒"
+        -    " ⠓"
+        -    " ⠋"
+        -    "⡀⠀"
+        -    "⠄⠀"
+        -    "⢂⠀"
+        -    "⡂⠀"
+        -    "⠅⠀"
+        -    "⢃⠀"
+        -    "⡃⠀"
+        -    "⠍⠀"
+        -    "⢋⠀"
+        -    "⡋⠀"
+        -    "⠍⠁"
+        -    "⢋⠁"
+        -    "⡋⠁"
+        -    "⠍⠉"
+        -    "⠋⠉"
+        -    "⠋⠉"
+        -    "⠉⠙"
+        -    "⠉⠙"
+        -    "⠉⠩"
+        -    "⠈⢙"
+        -    "⠈⡙"
+        -    "⢈⠩"
+        -    "⡀⢙"
+        -    "⠄⡙"
+        -    "⢂⠩"
+        -    "⡂⢘"
+        -    "⠅⡘"
+        -    "⢃⠨"
+        -    "⡃⢐"
+        -    "⠍⡐"
+        -    "⢋⠠"
+        -    "⡋⢀"
+        -    "⠍⡁"
+        -    "⢋⠁"
+        -    "⡋⠁"
+        -    "⠍⠉"
+        -    "⠋⠉"
+        -    "⠋⠉"
+        -    "⠉⠙"
+        -    "⠉⠙"
+        -    "⠉⠩"
+        -    "⠈⢙"
+        -    "⠈⡙"
+        -    "⠈⠩"
+        -    "⠀⢙"
+        -    "⠀⡙"
+        -    "⠀⠩"
+        -    "⠀⢘"
+        -    "⠀⡘"
+        -    "⠀⠨"
+        -    "⠀⢐"
+        -    "⠀⡐"
+        -    "⠀⠠"
+        -    "⠀⢀"
+        
+    ###< DEFAULT ###
+    env(GS_COMMAND_PATH_TO_PDF_CONVERTER): '%kernel.project_dir%/public/bundles/gscommand/exec/docto.exe'
+    gs_command.path_to_pdf_converter: '%env(gs_env_normalize_path:gs_env_is_exists_file:gs_env_is_absolute_path:resolve:GS_COMMAND_PATH_TO_PDF_CONVERTER)%'
+    
+    env(GS_COMMAND_PATH_TO_NIRCMD):   '%kernel.project_dir%/public/bundles/gscommand/exec/nircmd.exe'
+    gs_command.path_to_nircmd:         '%env(gs_env_normalize_path:gs_env_is_exists_path:gs_env_is_exists_file:resolve:GS_COMMAND_PATH_TO_NIRCMD)%'
+
+services:
+    _defaults:
+        public:             false
+        autowire:           false
+        autoconfigure:      false
+        
+        bind:
+            ###> !BORROW THESE VALUES! ###
+            $appEnv:                        '%gs_command.app_env%'
+            $progressBarSpin:               '%gs_command.progress_bar_spin%'
+            $gsCommandPathToPdfConverter:   '%gs_command.path_to_pdf_converter%'
+            $gsCommandPathToNircmd:         '%gs_command.path_to_nircmd%'
+            
+            ###> SERVICES ###
+            $devLogger: '@monolog.logger.gs_command.dev_logger'
+            ###< SERVICES ###
+            
+            ###> LIB SERVICES ###
+            $t: '@translator.default'
+            ###< LIB SERVICES ###
+            
+            ###< !BORROW THESE VALUES! ###
+            
+            ###> BUNDLE SERVICES ###
+            $gsServiceCarbonFactory:    '@gs_service.carbon_factory'
+            ###< BUNDLE SERVICES ###
+            
