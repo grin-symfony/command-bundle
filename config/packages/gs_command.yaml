@@ -1,10 +1,6 @@
-###> JUST EXAMPLE, copy it into your config ###
-
 gs_command:
-    app_env: '%gs_command.app_env%'
-    
-    # TODO: uncomment it to hide title about how to exit
-    display_init_help: '%env(bool:GS_COMMAND_DISPLAY_INIT_HELP_MESSAGE)%'
+
+    display_init_help: '%gs_command.display_init_help%'
     
     #https://raw.githubusercontent.com/sindresorhus/cli-spinners/master/spinners.json
     progress_bar_spin:

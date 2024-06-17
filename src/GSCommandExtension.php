@@ -45,7 +45,8 @@ class GSCommandExtension extends ConfigurableExtension implements PrependExtensi
         array $config,
         ContainerBuilder $container,
     ) {
-        return new Configuration(
+		return new Configuration(
+            appEnv: $container->getParameter('env(APP_ENV)'),
             progressBarSpin: $container->getParameter(ServiceContainer::getParameterName(
                 self::PREFIX,
                 self::PROGRESS_BAR_SPIN,

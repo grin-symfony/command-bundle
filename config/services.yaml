@@ -1,10 +1,9 @@
 parameters:
     ###> DEFAULT ###
     
-    gs_command.app_env: '%env(APP_ENV)%'
     env(GS_COMMAND_DISPLAY_INIT_HELP_MESSAGE): '1'
+    gs_command.display_init_help: '%env(bool:GS_COMMAND_DISPLAY_INIT_HELP_MESSAGE)%'
     
-    ###> DEFAULT WAY: parameters -> ContainerBuilder::getParameter -> Extension -> Configuration ###
     gs_command.progress_bar_spin:
         -    " ⠋"
         -    " ⠙"
