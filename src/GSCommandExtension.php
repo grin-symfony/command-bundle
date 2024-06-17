@@ -34,16 +34,10 @@ class GSCommandExtension extends ConfigurableExtension implements PrependExtensi
         return self::PREFIX;
     }
 
-    /**
-        -   load packages .yaml
-    */
     public function prepend(ContainerBuilder $container)
     {
         $this->loadYaml($container, [
             ['config', 'services.yaml'],
-            ['config/packages', 'translation.yaml'],
-            ['config/packages', 'monolog.yaml'],
-            ['config/packages', 'gs_command.yaml'],
         ]);
     }
 
@@ -59,16 +53,8 @@ class GSCommandExtension extends ConfigurableExtension implements PrependExtensi
         );
     }
 
-    /**
-        -   load services.yaml
-        -   config->services
-        -   bundle's tags
-    */
     public function loadInternal(array $config, ContainerBuilder $container): void
     {
-        $this->loadYaml($container, [
-            //['config', 'services.yaml'],
-        ]);
         $this->fillInParameters($config, $container);
         $this->fillInServiceArgumentsWithConfigOfCurrentBundle($config, $container);
         $this->registerBundleTagsForAutoconfiguration($container);
