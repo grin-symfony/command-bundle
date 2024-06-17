@@ -6,12 +6,14 @@ use function Symfony\Component\String\u;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\DependencyInjection\Parameter;
 use GS\Command\GSCommandExtension;
 
 class Configuration implements ConfigurationInterface
 {
     public function __construct(
         private readonly array $progressBarSpin,
+        private readonly string $appEnv,
     ) {
     }
 
@@ -31,8 +33,7 @@ class Configuration implements ConfigurationInterface
 
                 ->scalarNode(GSCommandExtension::APP_ENV)
                     ->info('env(APP_ENV) of the project')
-                    ->isRequired()
-                    #->defaultValue('%gs_command.locale%') Don't work, it's a simple string
+                    ->defaultValue($this->appEnv)
                 ->end()
 
                 ->booleanNode(GSCommandExtension::DISPLAY_INIT_HELP)
