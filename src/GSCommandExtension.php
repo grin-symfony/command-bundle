@@ -38,6 +38,7 @@ class GSCommandExtension extends ConfigurableExtension implements PrependExtensi
     {
         $this->loadYaml($container, [
             ['config', 'services.yaml'],
+            ['config/packages', 'monolog.yaml'],
         ]);
     }
 
